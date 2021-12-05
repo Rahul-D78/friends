@@ -11,9 +11,14 @@ export class User {
     @Column({nullable: false})
     email: string
 
+    @Column({nullable: true})
+    password?: string
 
-    constructor(name: string, email: string) {
-        this.email = email
+    token: string
+
+    constructor(name: string, email: string, password: string) {
         this.name = name
+        this.email = email
+        this.password = password
     }
 }
