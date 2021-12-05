@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Rahul-D78/friends/issues"
   },
-  "homepage": "https://github.com/Rahul-D78/friends#readme"
+  "homepage": "https://github.com/Rahul-D78/friends#readme",
+  "dependencies": {
+    "typeorm": "^0.2.41"
+  }
 }

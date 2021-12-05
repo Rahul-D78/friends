@@ -1,10 +1,9 @@
 import express from 'express';
+import { allRoutes } from './controller/allRoutes';
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+app.use(allRoutes)
 
-app.get('/', (req, res) => {
-    res.send('HI')
-})
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`server is listening on port 3000`))
