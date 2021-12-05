@@ -1,8 +1,10 @@
 import express from 'express';
 import { createConnection } from 'typeorm';
 import { User } from './models/user';
-import { allRoutes } from './controller/allRoutes';
+import { allRoutes } from './routes/allRoutes';
 const app = express();
+
+app.use(express.json())
 
 app.use(allRoutes)
 
@@ -14,6 +16,7 @@ async function start() {
         username: 'demo',
         password: 'pass',
         database: 'demo',
+        dropSchema: true,
         synchronize: true,
         entities: [User],
         logging: true,
