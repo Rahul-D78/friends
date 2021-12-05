@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Rahul-D78/friends#readme",
   "dependencies": {
+    "pg": "^8.7.1",
     "typeorm": "^0.2.41"
   }
 }
