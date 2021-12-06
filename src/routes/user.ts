@@ -12,7 +12,7 @@ route.get('/all', async(req, res) => {
         const user = await getAllUsers();
         res.status(200).send(user)
     } catch (e) {   
-        res.status(500).send(e)
+        res.status(500).send(`unable to get all ${e}`)
     }
 })
 
@@ -30,7 +30,7 @@ route.post('/register', async(req, res) => {
         const user = await createUser(req.body)
         res.status(200).send(user)
     } catch (e) {
-        res.status(500).send(e)
+        res.status(500).send(`user creation failed ${e}`)
     }
 })
 
@@ -39,7 +39,7 @@ route.post('/login', async(req, res) => {
         const user = await loginUser(req.body)
         res.status(200).send(user)
     } catch (e) {
-        res.status(500).send(e)
+        res.status(500).send(`Login Failed ${e}`)
     }
 })
 
@@ -48,7 +48,7 @@ route.patch('/update/:name', async(req, res) => {
         const user = await updateUser(req.body, req.params.name)
         res.status(200).send(user)
     } catch (e) {
-        res.status(500).send(e)
+        res.status(500).send(`update failed ${e}`)
     }
 })
 
@@ -57,7 +57,7 @@ route.delete('/delete/:name', async(req, res) => {
         const user = await deleteUser(req.body, req.params.name)
         res.status(200).send('user deleted')
     } catch (e) {
-        res.status(500).send(e)
+        res.status(500).send(`deletation failed ${e}`)
     }
 })
 
