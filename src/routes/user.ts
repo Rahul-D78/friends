@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import { createUser, deleteUser, getAllUsers, loginUser, updateUser } from '../controller/user';
+import { createUser, deleteUser, getAllUsers, getUserById, loginUser, updateUser } from '../controller/user';
+import { authByToken } from '../middleware/auth';
 const route = Router();
 
 route.get('/', (req, res) => {
@@ -12,6 +13,15 @@ route.get('/all', async(req, res) => {
         res.status(200).send(user)
     } catch (e) {   
         res.status(500).send(e)
+    }
+})
+
+route.get('/get/:name', authByToken, async(req, res) => {
+    try {
+        const user = await getUserById(req.params.name)
+        res.status(200).send(user)
+    } catch (e) {
+        res.status(500).send(`error get user ${e}`)
     }
 })
 

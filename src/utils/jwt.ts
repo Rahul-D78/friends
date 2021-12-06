@@ -17,9 +17,9 @@ export async function sign(user: User):Promise<string> {
 
 export async function decode(token: string):Promise<User> {
     return new Promise<User>((resolve, reject) => {
-        jwt.verify(token, secret!, (err, decode) => {
+        jwt.verify(token, secret!, (err, decoded) => {
             if(err) return reject(err)
-            return(decode as User)
+            return resolve(decoded as User)
         })
     })
 }

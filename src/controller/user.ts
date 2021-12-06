@@ -25,6 +25,18 @@ export async function getAllUsers(): Promise<User[]> {
     }
 }
 
+export async function getUserById(name: string): Promise<User> {
+    try {
+        const repo = getRepository(User);
+        const user = await repo.findOne({where: {name: name}})
+        
+        if(!user) throw new Error('invalid username user not found')
+        return await sanitization(user)
+    } catch (e) {
+        throw e
+    }
+}
+
 export async function createUser(userInfo: info): Promise<User> {
     
     //validation stage
